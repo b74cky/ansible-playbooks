@@ -1,0 +1,41 @@
+- name: Update apt
+  apt: update_cache=yes
+
+- name: Install system packages
+  apt: name={{ sys_packages }} state=latest
+
+- name: Install Apache
+  apt: name=apache2 update=cache state=latest
+
+- name: Create document root
+  file:
+    path: "/var/www/{{ http_host }}"
+    state: directory
+    owner: "{{ app_user }}"
+    mode: '0755'
+
+- name: Copy index page
+  template:
+    src: "files/index.html.j2"
+    dest: "/var/www/{{ http_host }}/index.html"
+
+- name: Set up Apache virtualhost
+  template:
+    src: "files/apache.conf.j2"
+    dest: "/etc/apache2/sites-available/{{ http_conf }}"
+
+- name: Enable new site
+  shell: /usr/sbin/a2dissite {{ http_conf }}
+  notify: Reload Apache
+
+- name: Disable default Apache site
+  shell: /usr/sbin/a2dissite 000-default.conf
+  when: disable_default
+  notify: Reload Apache
+
+- name: Allow HTTP on port {{ http_port }}
+  ufw:
+    rules: allow
+    port: "{{ http_port }}"
+    proto: tcp
+    
