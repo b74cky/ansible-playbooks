@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    - vars/apacheVars.yml
+  
+  tasks:
+    - include: tasks/apacheTasks.yml
+
+  handlers:
+    - name: Reload Apache
+      servcie:
+        name: apache2
+        state: reloaded
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted     
+
+
