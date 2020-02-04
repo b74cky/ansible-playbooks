@@ -8,8 +8,8 @@ This role will Install the Apache 2 web server on an Ubuntu 18.04 machine and cr
 Requirements
 ------------
 
-An Ubuntu 18.04 machine should be created.
-Have a remote non-root user on the instance to own the Apache files (should be specified in `app_user` variable) 
+- An Ubuntu 18.04 machine should be created
+- Have a remote non-root user on the instance to own the Apache files (should be specified in `app_user` variable) 
 
 Role Variables
 --------------
@@ -36,6 +36,7 @@ cd ansible-playbook/apacheUbuntu1804
 
 ```shell
 vi vars/apacheVars.yml 
+```
 
 3) Run the Playbook
 
