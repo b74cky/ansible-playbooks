@@ -9,6 +9,7 @@ Requirements
 ------------
 
 An Ubuntu 18.04 machine should be created.
+Have a remote non-root user on the instance to own the Apache files (should be specified in `app_user` variable) 
 
 Role Variables
 --------------
@@ -26,16 +27,21 @@ Example Playbook
 
 1) Clone the playbook and dig into it
 
+```shell
 git clone https://github.com/yauhenidasko/ansible-playbooks
 cd ansible-playbook/apacheUbuntu1804
+```
 
 2) Customize the values of variables
 
+```shell
 vi vars/apacheVars.yml 
 
 3) Run the Playbook
 
+```command
 ansible-playbook -l [target] -i [inventory file] -u [remote user] main.yml
+```
 
 License
 -------
