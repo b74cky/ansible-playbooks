@@ -9,7 +9,7 @@
 
   handlers:
     - name: Reload Apache
-      servcie:
+      service:
         name: apache2
         state: reloaded
     - name: Restart Apache
