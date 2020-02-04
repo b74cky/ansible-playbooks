@@ -14,7 +14,7 @@ Requirements
 Role Variables
 --------------
 
-All vars are specified in 'vars/apacheVars.yml':
+All vars are specified in `vars/apacheVars.yml`:
 
 - `app_user`: a remote non-root user on the host that will own the app files
 - `http_host`: domain name
@@ -29,7 +29,7 @@ Example Playbook
 
 ```shell
 git clone https://github.com/yauhenidasko/ansible-playbooks
-cd ansible-playbook/apacheUbuntu1804
+cd ansible-playbooks/apacheUbuntu1804
 ```
 
 2) Customize the values of variables
