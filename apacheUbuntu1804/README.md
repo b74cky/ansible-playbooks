@@ -1,38 +1,44 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Apache2 Ubuntu 18.04
+
+This role will Install the Apache 2 web server on an Ubuntu 18.04 machine and create a virtualhost with the options specified in 'vars/apacheVars.yml' file.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+An Ubuntu 18.04 machine should be created.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+All vars are specified in 'vars/apacheVars.yml':
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+- `app_user`: a remote non-root user on the host that will own the app files
+- `http_host`: domain name
+- `http_conf`: the name of Apache conf file
+- `http_port`: HTTP port, 80 by default 
+- `disable_default`: whether or not to disable the default Apache website. When set to true, your virtualhost will be used as default website
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+1) Clone the playbook and dig into it
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+git clone https://github.com/yauhenidasko/ansible-playbooks
+cd ansible-playbook/apacheUbuntu1804
+
+2) Customize the values of variables
+
+vi vars/apacheVars.yml 
+
+3) Run the Playbook
+
+ansible-playbook -l [target] -i [inventory file] -u [remote user] main.yml
 
 License
 -------
 
-BSD
+MIT
 
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
