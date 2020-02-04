@@ -8,13 +8,6 @@
     - include: tasks/apacheTasks.yml
 
   handlers:
-    - name: Reload Apache
-      service:
-        name: apache2
-        state: reloaded
-    - name: Restart Apache
-      service:
-        name: apache2
-        state: restarted     
+    - include: handlers/apacheHandlers.yml
 
 
