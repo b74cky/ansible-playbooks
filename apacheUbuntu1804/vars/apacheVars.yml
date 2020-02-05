@@ -1,4 +1,4 @@
-app_user: "myuser"
+app_user: "my_user"
 http_host: "my_domain"
 http_conf: "my_domain.conf"
 http_port: "80"
