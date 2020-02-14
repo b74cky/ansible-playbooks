@@ -1,4 +1,0 @@
----
-user: user
-password: password
-local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
