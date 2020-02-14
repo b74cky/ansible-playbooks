@@ -1,7 +1,5 @@
-Role Name
+Apache Ubuntu 18.04
 =========
-
-Apache2 Ubuntu 18.04
 
 This role will Install the Apache 2 web server on an Ubuntu 18.04 machine and create a virtualhost with the options specified in `vars/apacheVars.yml` file.
 
