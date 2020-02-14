@@ -1,0 +1,27 @@
+---
+- name: Install Prerequisites
+  apt: name=aptitude update_cache=yes state=latest force_apt_get=yes
+
+#User + Key Setup
+- name: Create a new user with sudo privilegas
+  user:
+    name: "{{ user }}"
+    password: "{{ password | password_hash('sha512') }}"
+    update_password: on_create
+    state: present
+    groups: sudo 
+    append: true
+    create_home: true
+    shell: /bin/bash
+  register: newuser
+
+- name: Force remote user to change password
+  shell: chage -d 0 "{{ user }}"
+  when: newuser.changed
+
+- name: Set authorized key for remote user
+  authorized_key:
+    user: "{{ user }}"
+    state: present
+    key: "{{ local_key }}"
+       
